@@ -8,5 +8,12 @@
 </head>
 <body>
     张明明，欢迎您
+    <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
+    <script>
+        axios.post('/node/users')
+            .then((res) => {
+                console.log(res, 'axios')
+            })
+    </script>
 </body>
 </html>

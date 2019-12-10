@@ -19,4 +19,13 @@ app.get('/node', (req, res) => {
     })
 });
 
+app.post('/node/users', (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({
+        name: '张明明',
+        age: 18
+    }));
+});
+
 app.listen(3000);
