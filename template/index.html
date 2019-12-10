@@ -1,13 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="font-size: 100px;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #F5F5F5;
+        }
+
+        ul {
+            list-style: none inside;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            border-style: none;
+        }
+
+        .list-box {
+            font-size: 0.12rem;
+            width: 3.55rem;
+            margin: 0 auto;
+        }
+
+        .list-item {
+            padding: 0.1rem;
+            display: flex;
+            border-radius: 0.04rem;
+            background: #fff;
+            margin: 0.1rem 0;
+        }
+
+        .list-item .img-box {
+            width: 1.2rem;
+            height: 1.2rem;
+            flex-shrink: 0;
+            margin-right: 0.1rem;
+        }
+
+        .list-item .img-box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .list-item .content-box .title {
+            font-size: 0.13rem;
+            font-weight: 500;
+            line-height: 0.16rem;
+            height: 0.32rem;
+            overflow: hidden;
+            
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            display: -webkit-box;
+        }
+
+        .list-item .content-box .title .tag {
+            font-size: 0.1rem;
+            color: #FF4A7D;
+            line-height: 0.14rem;
+            border: 0.01rem solid #FF4A7D;
+            border-radius: 0.02rem;
+            padding: 0 0.02rem;
+            margin-right: 0.02rem;
+        }
+
+        .list-item .content-box .detail {
+            font-size: 0.11rem;
+            color: #999;
+        }
+
+        .list-item .content-box .info {
+            margin-top: 0.29rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .list-item .content-box .info .back {
+            font-size: 0.11rem;
+            color: #C09353;
+        }
+
+        .list-item .content-box .info .sell-num {
+            font-size: 0.1rem;
+            color: #999;
+        }
+
+        .list-item .content-box .price {
+            font-size: 0.11rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .list-item .content-box .price .money-icon {
+            font-style: normal;
+            font-size: 0.11rem;
+        }
+
+        .list-item .content-box .price .big-price {
+            color: #FF4A7D;
+            font-size: 0.18rem;
+            font-weight: 500;
+        }
+
+        .list-item .content-box .price .samll-price {
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .list-item .content-box .price .btn {
+            font-size: 0.12rem;
+            color: #fff;
+            font-weight: 500;
+            width: 0.66rem;
+            line-height: 0.24rem;
+            text-align: center;
+            border-radius: 1000px;
+            background:linear-gradient(90deg,rgba(255,92,92,1) 0%,rgba(250,24,98,1) 100%);
+            box-shadow:0px 1px 3px 0px rgba(198,20,72,0.43);
+        }
+    </style>
 </head>
 <body>
-    张明明，欢迎您
+    <ul class="list-box">
+        <li class="list-item">
+            <div class="img-box">
+                <img src="https://9i.dvmama.com/supplier/2019/10/21/800_800_5fc5fa26654c09397f8b9d69c77a0648.jpg?x-oss-process=image/resize,m_fill,w_320,h_320/format,webp" alt="">
+            </div>
+            <div class="content-box">
+                <div class="title">
+                    <span class="tag">一键购</span>美的豆浆机 多功美的豆浆的豆浆机 多功能破壁机收到了可费劲发了圣诞节福利卡时间段
+                </div>
+                <div class="detail">
+                    品质保证，一手货源，李嘉琪推荐热推
+                </div>
+                <div class="info">
+                    <span class="back">会员返:¥9</span>
+                    <span class="sell-num">已售19100件</span>
+                </div>
+                <div class="price">
+                    <div>
+                        <span class="big-price">
+                            <i class="money-icon">￥</i>299.9
+                        </span>
+                        <span class="samll-price">
+                            ￥299.9
+                        </span>
+                    </div>
+                    <div class="btn">
+                        立即购买
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-item">
+                <div class="img-box">
+                    <img src="https://9i.dvmama.com/supplier/2019/10/21/800_800_5fc5fa26654c09397f8b9d69c77a0648.jpg?x-oss-process=image/resize,m_fill,w_320,h_320/format,webp" alt="">
+                </div>
+                <div class="content-box">
+                    <div class="title">
+                        <span class="tag">一键购</span>美的豆浆机 多功美的豆浆的豆浆机 多功能破壁机收到了可费劲发了圣诞节福利卡时间段
+                    </div>
+                    <div class="detail">
+                        品质保证，一手货源，李嘉琪推荐热推
+                    </div>
+                    <div class="info">
+                        <span class="back">会员返:¥9</span>
+                        <span class="sell-num">已售19100件</span>
+                    </div>
+                    <div class="price">
+                        <div>
+                            <span class="big-price">
+                                <i class="money-icon">￥</i>299.9
+                            </span>
+                            <span class="samll-price">
+                                ￥299.9
+                            </span>
+                        </div>
+                        <div class="btn">
+                            立即购买
+                        </div>
+                    </div>
+                </div>
+            </li>
+    </ul>
     <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
     <script>
         axios.post('/node/users')
