@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.5.1/css/swiper.min.css">
     <style>
         * {
             margin: 0;
@@ -26,6 +27,46 @@
 
         img {
             border-style: none;
+        }
+
+        .tabs {
+            font-size: 0.14rem;
+            color: #232220;
+            font-weight: 400;
+        }
+
+        .tabs .swiper-slide {
+            width:auto;
+        }
+
+        .tabs .swiper-slide.active {
+            color: #FF4A7D;
+        }
+
+        .tabs .swiper-slide .bottom-line {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tabs .swiper-slide .bottom-line .line {
+            width: 0.22rem;
+            height: 0.02rem;
+            border-radius: 1000px;
+        }
+
+        .tabs .swiper-slide .bottom-line .dot {
+            width: 0.02rem;
+            height: 0.02rem;
+            border-radius: 50%;
+            margin-right: 0.02rem;
+        }
+
+        .tabs .swiper-slide.active .bottom-line .line {
+            background: #FF4A7D;
+        }
+
+        .tabs .swiper-slide.active .bottom-line .dot {
+            background: #FF4A7D;
         }
 
         .list-box {
@@ -134,6 +175,59 @@
     </style>
 </head>
 <body>
+    <div class="swiper-container tabs">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide active">
+                精选
+                <div class="bottom-line">
+                    <span class="line"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                素材
+                <div class="bottom-line">
+                    <span class="line"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                母婴
+                <div class="bottom-line">
+                    <span class="line"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                食品
+                <div class="bottom-line">
+                    <span class="line"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                美妆
+                <div class="bottom-line">
+                    <span class="line"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                服饰
+                <div class="bottom-line">
+                    <span class="line"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                分段选择
+                <div class="bottom-line">
+                    <span class="line"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </div>
     <ul class="list-box">
         <li class="list-item">
             <div class="img-box">
@@ -197,11 +291,28 @@
             </li>
     </ul>
     <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/Swiper/4.5.1/js/swiper.min.js"></script>
     <script>
         axios.post('/node/users')
             .then((res) => {
                 console.log(res, 'axios')
             })
+
+        var mySwiper = new Swiper('.swiper-container.tabs', {
+            slidesPerView: 'auto',
+            slidesOffsetBefore : 21,
+            spaceBetween: 24,
+            slideToClickedSlide: true,
+            on: {
+                click: function () {
+                    let slides = document.querySelectorAll('.tabs .swiper-slide');
+                    for (let i = 0, len = slides.length; i < len; i++) {
+                        slides[i].classList.remove('active');
+                    }
+                    this.clickedSlide.classList.add('active');
+                }
+            }
+        })
     </script>
 </body>
 </html>
