@@ -95,6 +95,10 @@
             height: 100%;
         }
 
+        .list-item .content-box {
+            flex: 1;
+        }
+
         .list-item .content-box .title {
             font-size: 0.13rem;
             font-weight: 500;
@@ -122,10 +126,37 @@
         .list-item .content-box .detail {
             font-size: 0.11rem;
             color: #999;
+            line-height: 0.14rem;
+            height: 0.14rem;
+            overflow: hidden;
+        }
+
+        .list-item .content-box .team-income {
+            font-size: 0;
+            height: 0.14rem;
+            margin-top: 0.02rem;
+        }
+
+        .list-item .content-box .team-income-wrapper {
+            font-size: 0.09rem;
+            border-radius: 0.02rem;
+            border: 0.01rem solid rgba(255,74,125,1);
+            display: inline-block;
+            height: 0.12rem;
+            line-height: 0.12rem;
+        }
+        .list-item .content-box .team-income-wrapper span.text{
+            color: #fff;
+            background: #FF4A7D;
+            padding: 0 0.02rem;
+        }
+
+        .list-item .content-box .team-income-wrapper span.num{
+            padding: 0 0.01rem;
         }
 
         .list-item .content-box .info {
-            margin-top: 0.29rem;
+            margin-top: 0.16rem;
             display: flex;
             justify-content: space-between;
         }
@@ -155,6 +186,7 @@
             color: #FF4A7D;
             font-size: 0.18rem;
             font-weight: 500;
+            margin-right: 0.02rem;
         }
 
         .list-item .content-box .price .samll-price {
@@ -173,12 +205,17 @@
             background:linear-gradient(90deg,rgba(255,92,92,1) 0%,rgba(250,24,98,1) 100%);
             box-shadow:0px 1px 3px 0px rgba(198,20,72,0.43);
         }
+        .list-item .content-box .price .btn-adviser {
+            background:linear-gradient(90deg,rgba(255,225,173,1) 0%,rgba(255,203,142,1) 100%);
+            box-shadow:0px 1px 3px 0px rgba(207,127,32,0.34);
+            border-radius: 1000px;
+        }
     </style>
 </head>
 <body>
     <div class="swiper-container tabs">
         <div class="swiper-wrapper">
-            <div class="swiper-slide active">
+            <!-- <div class="swiper-slide active">
                 精选
                 <div class="bottom-line">
                     <span class="line"></span>
@@ -191,43 +228,11 @@
                     <span class="line"></span>
                     <span class="dot"></span>
                 </div>
-            </div>
-            <div class="swiper-slide">
-                母婴
-                <div class="bottom-line">
-                    <span class="line"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                食品
-                <div class="bottom-line">
-                    <span class="line"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                美妆
-                <div class="bottom-line">
-                    <span class="line"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                服饰
-                <div class="bottom-line">
-                    <span class="line"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                分段选择
-                <div class="bottom-line">
-                    <span class="line"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>
+            </div> -->
         </div>
+    </div>
+    <div class="goods">
+
     </div>
     <ul class="list-box">
         <li class="list-item">
@@ -240,6 +245,12 @@
                 </div>
                 <div class="detail">
                     品质保证，一手货源，李嘉琪推荐热推
+                </div>
+                <div class="team-income">
+                    <span class="team-income-wrapper">
+                        <span class="text">团队销售奖</span>
+                        <span class="num">15元</span>
+                    </span>
                 </div>
                 <div class="info">
                     <span class="back">会员返:¥9</span>
@@ -260,60 +271,194 @@
                 </div>
             </div>
         </li>
-        <li class="list-item">
-                <div class="img-box">
-                    <img src="https://9i.dvmama.com/supplier/2019/10/21/800_800_5fc5fa26654c09397f8b9d69c77a0648.jpg?x-oss-process=image/resize,m_fill,w_320,h_320/format,webp" alt="">
-                </div>
-                <div class="content-box">
-                    <div class="title">
-                        <span class="tag">一键购</span>美的豆浆机 多功美的豆浆的豆浆机 多功能破壁机收到了可费劲发了圣诞节福利卡时间段
-                    </div>
-                    <div class="detail">
-                        品质保证，一手货源，李嘉琪推荐热推
-                    </div>
-                    <div class="info">
-                        <span class="back">会员返:¥9</span>
-                        <span class="sell-num">已售19100件</span>
-                    </div>
-                    <div class="price">
-                        <div>
-                            <span class="big-price">
-                                <i class="money-icon">￥</i>299.9
-                            </span>
-                            <span class="samll-price">
-                                ￥299.9
-                            </span>
-                        </div>
-                        <div class="btn">
-                            立即购买
-                        </div>
-                    </div>
-                </div>
-            </li>
     </ul>
     <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
     <script src="https://cdn.bootcss.com/Swiper/4.5.1/js/swiper.min.js"></script>
     <script>
-        axios.post('/node/users')
+        
+        axios.post('/node/content')
             .then((res) => {
-                console.log(res, 'axios')
+                return res.data;
+            })
+            .then((res) => {
+                let tabsNameArr = [];
+                let goodsList = [];
+                let indexList = res.data.indexList;
+
+                for (let i = 0, len = indexList.length; i < len; i ++) {
+                    tabsNameArr.push(indexList[i].tabName);
+                    goodsList.push(indexList[i].goodsList);
+                }
+
+                tabsHandler(tabsNameArr);
+                goodsListHandler(goodsList, res.data.iden);
             })
 
-        var mySwiper = new Swiper('.swiper-container.tabs', {
-            slidesPerView: 'auto',
-            slidesOffsetBefore : 21,
-            spaceBetween: 24,
-            slideToClickedSlide: true,
-            on: {
-                click: function () {
-                    let slides = document.querySelectorAll('.tabs .swiper-slide');
-                    for (let i = 0, len = slides.length; i < len; i++) {
-                        slides[i].classList.remove('active');
-                    }
-                    this.clickedSlide.classList.add('active');
+        // tabs处理函数
+        function tabsHandler(arr) {
+            let swiperWrapper = document.querySelector('.tabs .swiper-wrapper');
+            let fragment = document.createDocumentFragment();
+
+            for (let i = 0, len = arr.length; i < len; i++) {
+                let swiperSlide = createEL('div');
+                let bottomLine = createEL('div');
+                let bottomLineLine = createEL('span');
+                let bottomLineDot = createEL('span');
+
+                swiperSlide.className = 'swiper-slide';
+                if (i === 0) {
+                    swiperSlide.className = 'swiper-slide active';
                 }
+                bottomLine.className = 'bottom-line';
+                bottomLineLine.className = 'line';
+                bottomLineDot.className = 'dot';
+
+                bottomLine.appendChild(bottomLineLine);
+                bottomLine.appendChild(bottomLineDot);
+                swiperSlide.textContent = arr[i];
+                swiperSlide.appendChild(bottomLine);
+                fragment.appendChild(swiperSlide);
             }
-        })
+
+            swiperWrapper.appendChild(fragment);
+
+            initTabsSwiper();
+        }
+
+        function goodsListHandler(arr, isValidAdviser) {
+            let goods = document.querySelector('.goods');
+            let fragment = document.createDocumentFragment();
+
+            for (let i = 0, len = arr.length; i < len; i++) {
+                let listBox = createEL('ul');
+                listBox.className = 'list-box';
+
+                let arrItem = arr[i];
+                
+                for (let j = 0, jLen = arrItem.length; j < jLen; j++) {
+                    let arrItemItem = arrItem[j];
+
+                    let listItem = createEL('li');
+                    let imgBox = createEL('div');
+                    let img = createEL('img');
+                    let contentBox = createEL('div');
+                    let title = createEL('div');
+                    let tag = createEL('span');
+                    let detail = createEL('div');
+                    let teamIncome = createEL('div');
+                    let teamIncomeWrapper = createEL('span');
+                    let text = createEL('span');
+                    let num = createEL('span');
+                    let info = createEL('div');
+                    let back = createEL('span');
+                    let sellNum = createEL('span');
+                    let price = createEL('div');
+                    let div = createEL('div');
+                    let bigPrice = createEL('span');
+                    let moneyIcon = createEL('i');
+                    let samllPrice = createEL('span');
+                    let btn = createEL('div');
+
+                    listItem.className = 'list-item';
+                    imgBox.className = 'img-box';
+                    img.src = arrItemItem.goods_img;
+                    contentBox.className = 'content-box';
+                    title.className = 'title';
+                    title.textContent = arrItemItem.goods_name;
+                    if (arrItemItem.goods_act) {
+                        tag.className = 'tag';
+                        tag.textContent = arrItemItem.goods_act;
+                        title.prepend(tag);
+                    }
+                    detail.className = 'detail';
+                    detail.textContent = arrItemItem.goods_commond;
+
+                    teamIncome.className = 'team-income';
+                    if (isValidAdviser === 1) {
+                        teamIncomeWrapper.className = 'team-income-wrapper';
+                        text.className = 'text';
+                        text.textContent = '团队销售奖';
+                        num.className = 'num';
+                        num.textContent = arrItemItem.team_income + '元';
+                        teamIncomeWrapper.appendChild(text);
+                        teamIncomeWrapper.appendChild(num);
+                        teamIncome.appendChild(teamIncomeWrapper);
+                    }
+
+                    info.className = 'info';
+                    back.className = 'back';
+                    back.textContent = '会员返￥' + arrItemItem.income_price;
+                    sellNum.className = 'sell-num';
+                    sellNum.textContent = '已售' + arrItemItem.sell_amount + '件';
+
+                    if (isValidAdviser === 1) {
+                        sellNum.textContent = '已推' + arrItemItem.share_times + '次';
+                    }
+
+                    price.className = 'price';
+                    moneyIcon.className = 'money-icon';
+                    moneyIcon.textContent = '￥';
+                    bigPrice.className = 'big-price';
+                    bigPrice.textContent = arrItemItem.market_price;
+                    bigPrice.prepend(moneyIcon);
+                    samllPrice.className = 'samll-price';
+                    samllPrice.textContent = '￥' + arrItemItem.shop_price;
+                    btn.className = 'btn';
+                    btn.textContent = '立即购买';
+
+                    if (isValidAdviser === 1) {
+                        btn.className = 'btn-adviser';
+                        btn.textContent = '凤凰赚￥' + arrItemItem.will_income;
+                    }
+
+                    info.appendChild(back);
+                    info.appendChild(sellNum);
+
+                    div.appendChild(bigPrice);
+                    div.appendChild(samllPrice);
+                    price.appendChild(div);
+                    price.appendChild(btn);
+
+                    imgBox.appendChild(img);
+                    contentBox.appendChild(title);
+                    contentBox.appendChild(detail);
+                    contentBox.appendChild(teamIncome);
+                    contentBox.appendChild(info);
+                    contentBox.appendChild(price);
+                    listItem.appendChild(imgBox);
+                    listItem.appendChild(contentBox);
+                    listBox.appendChild(listItem);
+                }
+
+                fragment.appendChild(listBox);
+            }
+            
+            goods.appendChild(fragment);
+        }
+
+        // 初始化tabs
+        function initTabsSwiper() {
+            var mySwiper = new Swiper('.swiper-container.tabs', {
+                slidesPerView: 'auto',
+                slidesOffsetBefore : 21,
+                spaceBetween: 24,
+                slideToClickedSlide: true,
+                on: {
+                    click: function () {
+                        let slides = document.querySelectorAll('.tabs .swiper-slide');
+                        for (let i = 0, len = slides.length; i < len; i++) {
+                            slides[i].classList.remove('active');
+                        }
+                        this.clickedSlide.classList.add('active');
+                    }
+                }
+            })
+        }
+
+        function createEL(str) {
+            return document.createElement(str);
+        }
+        
     </script>
 </body>
 </html>
