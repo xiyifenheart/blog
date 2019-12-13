@@ -75,6 +75,11 @@ const contentIndexObj = {
                         "ad_img": "http://bravetime.vyohui.cn", //广告图  goods_id == 0
                         "ad_url": "http://bravetime.vyohui.cn" //广告链接 goods_id == 0
                     },
+                    {
+                        "goods_id": 0, //商品id
+                        "ad_img": "https://9i.dvmama.com/supplier/2019/10/21/800_800_cf0c9da98bb1c1552a2e9c6eef5e9f3a.jpg?x-oss-process=image/resize,m_fill,w_320,h_320/format,webp", //广告图  goods_id == 0
+                        "ad_url": "http://bravetime.vyohui.cn" //广告链接 goods_id == 0
+                    }
                 ],
             },
         ]
