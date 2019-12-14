@@ -5,6 +5,8 @@ const Url = require('url');
 const zexpress = require('../lib/zexpress');
 const app = zexpress();
 
+const baseUrl = '/api';
+
 const contentIndexObj = {
     "code": 0,
     "data_version": "cba095159b86391d52dd69a62c792eec",
@@ -86,7 +88,7 @@ const contentIndexObj = {
     }
 }
 
-app.get('/node', (req, res) => {
+app.get(baseUrl, (req, res) => {
     fs.readFile(path.resolve('../template/index.html'), (err, data) => {
         if (err) {
             res.statusCode = 500;
@@ -100,7 +102,7 @@ app.get('/node', (req, res) => {
     })
 });
 
-app.post('/node/users', (req, res) => {
+app.post(`${baseUrl}/users`, (req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify({
@@ -109,7 +111,7 @@ app.post('/node/users', (req, res) => {
     }));
 });
 
-app.post('/node/content', (req, res) => {
+app.post(`${baseUrl}/content`, (req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(contentIndexObj));
