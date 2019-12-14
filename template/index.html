@@ -29,14 +29,18 @@
             border-style: none;
         }
 
+        /*css*/
         .tabs {
             font-size: 0.14rem;
             color: #232220;
             font-weight: 400;
+            width: 3.75rem;
+            margin: 0 auto;
         }
 
         .tabs .swiper-slide {
-            width:auto;
+            width: auto;
+            padding-top: 0.04rem;
         }
 
         .tabs .swiper-slide.active {
@@ -46,6 +50,7 @@
         .tabs .swiper-slide .bottom-line {
             display: flex;
             justify-content: space-between;
+            margin-top: 0.04rem;
         }
 
         .tabs .swiper-slide .bottom-line .line {
@@ -73,14 +78,25 @@
             font-size: 0.12rem;
             width: 3.55rem;
             margin: 0 auto;
+            display: none;
+            padding-bottom: 0.1rem;
+        }
+
+        .list-box:first-child {
+            display: block;
         }
 
         .list-item {
             padding: 0.1rem;
             display: flex;
+            align-items: flex-start;
             border-radius: 0.04rem;
             background: #fff;
             margin: 0.1rem 0;
+        }
+
+        .list-item .only-img {
+            width: 100%;
         }
 
         .list-item .img-box {
@@ -100,6 +116,7 @@
         }
 
         .list-item .content-box .title {
+            text-align: left;
             font-size: 0.13rem;
             font-weight: 500;
             line-height: 0.16rem;
@@ -124,6 +141,7 @@
         }
 
         .list-item .content-box .detail {
+            text-align: left;
             font-size: 0.11rem;
             color: #999;
             line-height: 0.14rem;
@@ -132,6 +150,7 @@
         }
 
         .list-item .content-box .team-income {
+            text-align: left;
             font-size: 0;
             height: 0.14rem;
             margin-top: 0.02rem;
@@ -142,7 +161,7 @@
             border-radius: 0.02rem;
             border: 0.01rem solid rgba(255,74,125,1);
             display: inline-block;
-            height: 0.12rem;
+            height: 0.14rem;
             line-height: 0.12rem;
         }
         .list-item .content-box .team-income-wrapper span.text{
@@ -177,6 +196,10 @@
             justify-content: space-between;
         }
 
+        .list-item .content-box .price > div {
+            padding-top: 0.03rem;
+        }
+
         .list-item .content-box .price .money-icon {
             font-style: normal;
             font-size: 0.11rem;
@@ -205,10 +228,26 @@
             background:linear-gradient(90deg,rgba(255,92,92,1) 0%,rgba(250,24,98,1) 100%);
             box-shadow:0px 1px 3px 0px rgba(198,20,72,0.43);
         }
+
         .list-item .content-box .price .btn-adviser {
+            display: flex;
+            align-items: center;
+            line-height: 0.24rem;
             background:linear-gradient(90deg,rgba(255,225,173,1) 0%,rgba(255,203,142,1) 100%);
             box-shadow:0px 1px 3px 0px rgba(207,127,32,0.34);
             border-radius: 1000px;
+            padding: 0 0.04rem 0 0.06rem;
+        }
+
+        .list-item .content-box .price .btn-adviser img {
+            width: 0.11rem;
+            height: 0.11rem;
+            margin-right: 0.02rem;
+        }
+        
+        .list-item .content-box .price .btn-adviser .btn-adviser-span {
+            font-size: 0.12rem;
+            color: #6B4208;
         }
     </style>
 </head>
@@ -337,96 +376,112 @@
                 
                 for (let j = 0, jLen = arrItem.length; j < jLen; j++) {
                     let arrItemItem = arrItem[j];
-
                     let listItem = createEL('li');
-                    let imgBox = createEL('div');
-                    let img = createEL('img');
-                    let contentBox = createEL('div');
-                    let title = createEL('div');
-                    let tag = createEL('span');
-                    let detail = createEL('div');
-                    let teamIncome = createEL('div');
-                    let teamIncomeWrapper = createEL('span');
-                    let text = createEL('span');
-                    let num = createEL('span');
-                    let info = createEL('div');
-                    let back = createEL('span');
-                    let sellNum = createEL('span');
-                    let price = createEL('div');
-                    let div = createEL('div');
-                    let bigPrice = createEL('span');
-                    let moneyIcon = createEL('i');
-                    let samllPrice = createEL('span');
-                    let btn = createEL('div');
-
                     listItem.className = 'list-item';
-                    imgBox.className = 'img-box';
-                    img.src = arrItemItem.goods_img;
-                    contentBox.className = 'content-box';
-                    title.className = 'title';
-                    title.textContent = arrItemItem.goods_name;
-                    if (arrItemItem.goods_act) {
-                        tag.className = 'tag';
-                        tag.textContent = arrItemItem.goods_act;
-                        title.prepend(tag);
+
+                    if (arrItemItem.goods_id === 0) {
+                        let onlyImg = createEL('img');
+                        onlyImg.className = 'only-img';
+                        onlyImg.src = arrItemItem.ad_img;
+                        listItem.appendChild(onlyImg);
+                        listItem.style.padding = '0';
+                    } else {
+                        let imgBox = createEL('div');
+                        let img = createEL('img');
+                        let contentBox = createEL('div');
+                        let title = createEL('div');
+                        let tag = createEL('span');
+                        let detail = createEL('div');
+                        let teamIncome = createEL('div');
+                        let teamIncomeWrapper = createEL('span');
+                        let text = createEL('span');
+                        let num = createEL('span');
+                        let info = createEL('div');
+                        let back = createEL('span');
+                        let sellNum = createEL('span');
+                        let price = createEL('div');
+                        let div = createEL('div');
+                        let bigPrice = createEL('span');
+                        let moneyIcon = createEL('i');
+                        let samllPrice = createEL('span');
+                        let btn = createEL('div');
+    
+                        imgBox.className = 'img-box';
+                        img.src = arrItemItem.goods_img;
+                        contentBox.className = 'content-box';
+                        title.className = 'title';
+                        title.textContent = arrItemItem.goods_name;
+                        if (arrItemItem.goods_act) {
+                            tag.className = 'tag';
+                            tag.textContent = arrItemItem.goods_act;
+                            title.prepend(tag);
+                        }
+                        detail.className = 'detail';
+                        detail.textContent = arrItemItem.goods_commond;
+    
+                        teamIncome.className = 'team-income';
+                        if (isValidAdviser === 1) {
+                            teamIncomeWrapper.className = 'team-income-wrapper';
+                            text.className = 'text';
+                            text.textContent = '团队销售奖';
+                            num.className = 'num';
+                            num.textContent = arrItemItem.team_income + '元';
+                            teamIncomeWrapper.appendChild(text);
+                            teamIncomeWrapper.appendChild(num);
+                            teamIncome.appendChild(teamIncomeWrapper);
+                        }
+    
+                        info.className = 'info';
+                        back.className = 'back';
+                        back.textContent = '会员返￥' + arrItemItem.income_price;
+                        sellNum.className = 'sell-num';
+                        sellNum.textContent = '已售' + arrItemItem.sell_amount + '件';
+    
+                        if (isValidAdviser === 1) {
+                            sellNum.textContent = '已推' + arrItemItem.share_times + '次';
+                        }
+    
+                        price.className = 'price';
+                        moneyIcon.className = 'money-icon';
+                        moneyIcon.textContent = '￥';
+                        bigPrice.className = 'big-price';
+                        bigPrice.textContent = arrItemItem.market_price;
+                        bigPrice.prepend(moneyIcon);
+                        samllPrice.className = 'samll-price';
+                        samllPrice.textContent = '￥' + arrItemItem.shop_price;
+                        btn.className = 'btn';
+                        btn.textContent = '立即购买';
+    
+                        if (isValidAdviser === 1) {
+                            let shareImg = createEL('img');
+                            let btnAdviserSpan = createEL('span');
+    
+                            btn.textContent = '';
+                            shareImg.src = '//9i.dvmama.com/shop_logo/2019/12/12/src__3d3829fa2c26e07214ad483c597e45b1.png';
+                            btnAdviserSpan.className = 'btn-adviser-span';
+                            btnAdviserSpan.innerHTML = '凤凰赚<strong>￥' + arrItemItem.will_income + '</strong>';
+                            btn.className = 'btn-adviser';
+                            btn.appendChild(shareImg);
+                            btn.appendChild(btnAdviserSpan);
+                        }
+    
+                        info.appendChild(back);
+                        info.appendChild(sellNum);
+    
+                        div.appendChild(bigPrice);
+                        div.appendChild(samllPrice);
+                        price.appendChild(div);
+                        price.appendChild(btn);
+    
+                        imgBox.appendChild(img);
+                        contentBox.appendChild(title);
+                        contentBox.appendChild(detail);
+                        contentBox.appendChild(teamIncome);
+                        contentBox.appendChild(info);
+                        contentBox.appendChild(price);
+                        listItem.appendChild(imgBox);
+                        listItem.appendChild(contentBox);
                     }
-                    detail.className = 'detail';
-                    detail.textContent = arrItemItem.goods_commond;
-
-                    teamIncome.className = 'team-income';
-                    if (isValidAdviser === 1) {
-                        teamIncomeWrapper.className = 'team-income-wrapper';
-                        text.className = 'text';
-                        text.textContent = '团队销售奖';
-                        num.className = 'num';
-                        num.textContent = arrItemItem.team_income + '元';
-                        teamIncomeWrapper.appendChild(text);
-                        teamIncomeWrapper.appendChild(num);
-                        teamIncome.appendChild(teamIncomeWrapper);
-                    }
-
-                    info.className = 'info';
-                    back.className = 'back';
-                    back.textContent = '会员返￥' + arrItemItem.income_price;
-                    sellNum.className = 'sell-num';
-                    sellNum.textContent = '已售' + arrItemItem.sell_amount + '件';
-
-                    if (isValidAdviser === 1) {
-                        sellNum.textContent = '已推' + arrItemItem.share_times + '次';
-                    }
-
-                    price.className = 'price';
-                    moneyIcon.className = 'money-icon';
-                    moneyIcon.textContent = '￥';
-                    bigPrice.className = 'big-price';
-                    bigPrice.textContent = arrItemItem.market_price;
-                    bigPrice.prepend(moneyIcon);
-                    samllPrice.className = 'samll-price';
-                    samllPrice.textContent = '￥' + arrItemItem.shop_price;
-                    btn.className = 'btn';
-                    btn.textContent = '立即购买';
-
-                    if (isValidAdviser === 1) {
-                        btn.className = 'btn-adviser';
-                        btn.textContent = '凤凰赚￥' + arrItemItem.will_income;
-                    }
-
-                    info.appendChild(back);
-                    info.appendChild(sellNum);
-
-                    div.appendChild(bigPrice);
-                    div.appendChild(samllPrice);
-                    price.appendChild(div);
-                    price.appendChild(btn);
-
-                    imgBox.appendChild(img);
-                    contentBox.appendChild(title);
-                    contentBox.appendChild(detail);
-                    contentBox.appendChild(teamIncome);
-                    contentBox.appendChild(info);
-                    contentBox.appendChild(price);
-                    listItem.appendChild(imgBox);
-                    listItem.appendChild(contentBox);
                     listBox.appendChild(listItem);
                 }
 
@@ -450,6 +505,12 @@
                             slides[i].classList.remove('active');
                         }
                         this.clickedSlide.classList.add('active');
+                        
+                        let listBox = document.querySelectorAll('.list-box');
+                        for (let i = 0, len = listBox.length; i < len; i++) {
+                            listBox[i].style.display = 'none';
+                        }
+                        listBox[this.clickedIndex].style.display = 'block';
                     }
                 }
             })
