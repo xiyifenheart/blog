@@ -19,7 +19,7 @@ const login = {
 
 function App() {
   return (
-    <Router>
+    <Router basename='/blog-admin'>
       <Switch>
         {/* exact 精准匹配 */}
         <PrivateRoute exact path="/">

@@ -117,6 +117,18 @@ app.post(`${baseUrl}/content`, (req, res) => {
     res.end(JSON.stringify(contentIndexObj));
 });
 
+app.post(`${baseUrl}/login`, (req, res) => {
+    // if () {
+
+    // }
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({
+        name: '张明明',
+        age: 18
+    }));
+});
 
 
-app.listen(3000);
+
+app.listen(3001);

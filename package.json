@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/xiyifenheart/blog/issues"
   },
-  "homepage": "https://github.com/xiyifenheart/blog#readme"
+  "homepage": "https://github.com/xiyifenheart/blog#readme",
+  "dependencies": {}
 }
