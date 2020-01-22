@@ -16,8 +16,8 @@ class Login extends React.Component {
                 let usernameMd5 = md5(values.username);
                 let passwordMd5 = md5(values.password);
                 passwordMd5 = md5(passwordMd5);
-                // axios.post('https://mingmingzhang.com/api/login', {
-                axios.post('http://localhost:3001/api/login', {
+                axios.post('https://mingmingzhang.com/api/login', {
+                // axios.post('http://localhost:3001/api/login', {
                     username: usernameMd5,
                     password: passwordMd5
                 }).then((data) => {
